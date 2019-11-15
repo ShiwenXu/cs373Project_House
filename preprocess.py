@@ -1,5 +1,6 @@
 # CS373 Project
 
+<<<<<<< HEAD
 import csv
 import io
 import random
@@ -93,3 +94,6 @@ def main():
         price_range_dic = price_range(price)
 
 main()
+=======
+import csv
+>>>>>>> 93fe495dfe9c6de4ba3565436f11d8aae4e49bba
