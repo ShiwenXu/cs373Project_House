@@ -37,5 +37,5 @@ def k_fold_cv(training_data, training_label, k_value, algo):
             # print y_predicted
             precision, recall, f1 = Evaluation.evaluate(y_validation, y_predicted)
             f1_sum += f1
-    return f1_sum / k
+            return f1_sum / k
 
