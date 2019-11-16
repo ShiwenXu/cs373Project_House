@@ -26,13 +26,14 @@ def k_fold_cv(training_data, training_label, k_value, algo):
                 S.remove(j)
 
         X_train = training_data[S[0]:S[-1]:]
-        y_train = training_label[S[0]:S[-2]:]
+        y_train = training_label[S[0]:S[-1]:]
 
         X_validation = training_data[T[0]:T[-1]:]
-        y_validation = training_label[T[0]:T[-2]:]
+        y_validation = training_label[T[0]:T[-1]:]
 
         if algo == 0:
             y_predicted = KNN.run(X_train, y_train, X_validation, k_value)
+            # print y_predicted
             accuracy, precision, recall, f1 = Evaluation.evaluate(y_validation, y_predicted)
             f1_sum += f1
         return f1_sum / k
