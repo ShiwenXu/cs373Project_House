@@ -9,7 +9,7 @@ def tuning():
     best_k_nn=-1
     for max_depth in range(1, 8):
         print('max_depth=%d:' % max_depth)
-        f1 = k_fold(data, labels,0)
+        f1 = k_fold(np.data.T, labels,0)
         if f1 > max_f1:
             max_f1 = f1
             best_max_depth = max_depth
