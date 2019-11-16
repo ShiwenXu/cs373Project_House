@@ -3,6 +3,7 @@
 import csv
 import io
 import random
+import numpy as np
 
 def read_file():
         with open('HousePrices_HalfMil.csv', 'r') as csvfile:
@@ -37,7 +38,7 @@ def processData(data_lsts):
 
         return selectlsts, attributes_name, price
 
-def price_range(price, price_1000, price_600):
+def price_range(price, price_1000, price_600, test_price):
         
         price_min = min(price)
         price_max = max(price)
@@ -88,19 +89,23 @@ def select_training(selectlsts, price):
         
         for i in rand_1000:
                 data_1000.append(selectlsts[i])
-                price_1000.append(selectlsts[i])
+                price_1000.append(price[i])
         
         for i in rand_600:
                 data_600.append(selectlsts[i])
-                price_600.append(selectlsts[i])
+                price_600.append(price[i])
 
         return test_data, test_price, data_1000, price_1000, data_600, price_600
 
-def main():
+def obtain_result():
         data_lsts = read_file()
         selectlsts, attributes_name, price = processData(data_lsts)
         test_data, test_price, data_1000, price_1000, data_600, price_600 = select_training(selectlsts, price)
-        label_1000, label_600, label_test = price_range(price, price_1000, price_600)
-        return test_data, data_1000, data_600, label_test, label_1000, label_600
+        label_1000, label_600, label_test = price_range(price, price_1000, price_600, test_price)
+        data_1000 = np.asmatrix(data_1000)
+        data_600 = np.asmatrix(data_600)
+        label_1000 = (np.asmatrix(label_1000)).T
+        label_600 = (np.asmatrix(label_600)).T
+        return data_1000, label_1000, data_600, label_600
         
-main()
+obtain_result()
