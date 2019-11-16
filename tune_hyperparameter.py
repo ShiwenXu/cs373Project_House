@@ -12,8 +12,8 @@ def tuning():
         f1 = k_fold.k_fold_cv(data_600,label_600,max_k,0)
         if f1 > max_f1:
             max_f1 = f1
-            best_max_depth = max_k
-    print('Best max_k: %d\n' % max_k)
+            best_k_nn = max_k
+    print('Best max_k: %d\n' % best_k_nn)
 
 
     # #tuning the best max depth:
