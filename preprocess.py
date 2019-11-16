@@ -37,7 +37,7 @@ def processData(data_lsts):
 
         return selectlsts, attributes_name, price
 
-def price_range(price):
+def price_range(price, price_1000, price_600):
         
         price_min = min(price)
         price_max = max(price)
@@ -47,12 +47,22 @@ def price_range(price):
         increment = price_range / 10
         dic_price = {}
         
+        counter = 0
         # assign price scope to each price
         for i in price:
                 scope = (i - price_min) / increment
                 dic_price[i] = scope + 1
+        label_1000 = []
+        label_600 = []
+        label_test = []
+        for i in price_1000:
+                label_1000.append(dic_price[i])
+        for j in price_600:
+                label_600.append(dic_price[j])
+        for k in test_price:
+                label_test.append(dic_price[k])
                 
-        return dic_price
+        return label_1000, label_600, label_test
 
 def select_training(selectlsts, price):
         # random choose index for trainging and testing
@@ -90,6 +100,7 @@ def main():
         data_lsts = read_file()
         selectlsts, attributes_name, price = processData(data_lsts)
         test_data, test_price, data_1000, price_1000, data_600, price_600 = select_training(selectlsts, price)
-        price_range_dic = price_range(price)
-
+        label_1000, label_600, label_test = price_range(price, price_1000, price_600)
+        return test_data, data_1000, data_600, label_test, label_1000, label_600
+        
 main()
