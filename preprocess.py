@@ -106,6 +106,6 @@ def obtain_result():
         data_600 = np.asmatrix(data_600)
         label_1000 = (np.asmatrix(label_1000)).T
         label_600 = (np.asmatrix(label_600)).T
-        return data_1000, label_1000, data_600, label_600
+        return data_1000, label_1000, data_600, label_600,test_data,test_price
         
 obtain_result()

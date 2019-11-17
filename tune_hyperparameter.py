@@ -4,10 +4,10 @@ import preprocess
 
 def tuning():
     #tuning the best k for K NEAREST NEIGHBOR:
-    data,labels,data_600,label_600=preprocess.obtain_result()
+    data,labels,data_600,label_600,test_data,test_price=preprocess.obtain_result()
     max_f1=-1
     best_k_nn=-1
-    for max_k in range(1, 8):
+    for max_k in range(2, 14):
         print('max_depth=%d:' % max_k)
         f1 = k_fold.k_fold_cv(data_600,label_600,max_k,0)
         if f1 > max_f1:
