@@ -28,15 +28,15 @@ def evaluate(labels, predicted_labels):
         if true_predicted[i] == 0 or predicted_p_each_range[i] == 0:
             precision +=0
             continue
-        precision+=(float(true_predicted[i])/float(predicted_p_each_range[i]))
-    precision = precision/10
+        precision+=float(float(total_each_range[i])*float(true_predicted[i])/float(predicted_p_each_range[i])/size)
+    # precision = precision/10
     recall=0
     for i in range(1,11):
         if true_predicted[i] == 0 or total_each_range[i] == 0:
             recall +=0
             continue
-        recall+=(float(true_predicted[i])/float(total_each_range[i]))
-    recall = recall/10
+        recall+=float(float(total_each_range[i])*(float(true_predicted[i])/float(total_each_range[i]))/size)
+    # recall = recall/10
     f1=0
     if precision+recall == 0:
         f1 == 0

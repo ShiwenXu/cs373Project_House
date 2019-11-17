@@ -7,8 +7,8 @@ def tuning():
     data,labels,data_600,label_600,test_data,test_price=preprocess.obtain_result()
     max_f1=-1
     best_k_nn=-1
-    for max_k in range(2, 10):
-        print('max_depth=%d:' % max_k)
+    for max_k in range(2, 12):
+        print('max_k=%d:' % max_k)
         f1 = k_fold.k_fold_cv(data_600,label_600,max_k,0)
         if f1 > max_f1:
             max_f1 = f1
