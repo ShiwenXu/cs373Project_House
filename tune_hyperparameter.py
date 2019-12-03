@@ -4,7 +4,7 @@ import preprocess
 
 def tuning():
     #tuning the best k for K NEAREST NEIGHBOR:
-    data,labels,data_600,label_600,test_data,test_price=preprocess.obtain_result()
+    data_500_tune, labels_500_tune,data_600, label_600, data_1000,label_1000,test_data,test_label =preprocess.obtain_result()
     max_f1=-1
     best_k_nn=-1
     for max_k in range(2, 12):
