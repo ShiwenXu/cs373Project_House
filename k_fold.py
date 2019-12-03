@@ -7,7 +7,7 @@ import DT
 k = 5
 
 
-def k_fold_cv(training_data, training_label, k_value, algo):
+def k_fold_cv(training_data, training_label, k_value,algo):
     # Your code goes here
     (n, d) = np.shape(training_data)
     f1_sum = 0
@@ -43,14 +43,14 @@ def k_fold_cv(training_data, training_label, k_value, algo):
             # print y_predicted
         # max_depth
         elif algo == 1:
-            y_predicted = DT.run(X_train, y_train, X_validation, k_value, 1)
-            # print(y_predicted)
+            y_predicted = DT.run(X_train, y_train, X_validation, k_value, 0, 0, 1)
+            print(y_predicted)
         # min_split
         elif algo == 2:
-            y_predicted = DT.run(X_train, y_train, X_validation, k_value, 2)
+            y_predicted = DT.run(X_train, y_train, X_validation, 0, k_value, 0, 2)
         # max_feature
         elif algo == 3:
-            y_predicted = DT.run(X_train, y_train, X_validation, k_value, 3)
+            y_predicted = DT.run(X_train, y_train, X_validation, 0, 0, k_value, 3)
 
         precision, recall, f1 = Evaluation.evaluate(y_validation, y_predicted)
         f1_sum += f1
