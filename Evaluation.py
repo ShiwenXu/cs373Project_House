@@ -5,6 +5,7 @@ def evaluate(labels, predicted_labels):
     predicted_p_each_range={}
     total_each_range = {}
     true_predicted={}
+    false_positive={}
 
     for i in range(1,11):
         predicted_p_each_range[i]=0
@@ -14,11 +15,14 @@ def evaluate(labels, predicted_labels):
 
     for i in range(1,11):
         true_predicted[i]=0
+    for i in range(1,11):
+        false_positive[i]=0
     for i in range(size):
         total_each_range[int(labels[i])] +=1
         predicted_p_each_range[int(predicted_labels[i])]+=1
         if int(labels[i]) != int(predicted_labels[i]):
-             loss += 1
+            loss += 1
+            false_positive[int(predicted_labels[i])]+=1
         if int(predicted_labels[i]) == int(labels[i]):
              true_predicted[int(predicted_labels[i])] += 1
     accuracy = (float(size)-float(loss))/float(size)
@@ -28,14 +32,14 @@ def evaluate(labels, predicted_labels):
         if true_predicted[i] == 0 or predicted_p_each_range[i] == 0:
             precision +=0
             continue
-        precision+=float(float(total_each_range[i])*float(true_predicted[i])/float(predicted_p_each_range[i])/size)
+        precision+=float((float(true_predicted[i])/float(predicted_p_each_range[i]))*((float(total_each_range[i])/size)))
     # precision = precision/10
     recall=0
     for i in range(1,11):
         if true_predicted[i] == 0 or total_each_range[i] == 0:
             recall +=0
             continue
-        recall+=float(float(total_each_range[i])*(float(true_predicted[i])/float(total_each_range[i]))/size)
+        recall+=float((float(true_predicted[i])/float(total_each_range[i]))*(float(total_each_range[i]/size)))
     # recall = recall/10
     f1=0
     if precision+recall == 0:

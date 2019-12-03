@@ -36,7 +36,7 @@ def k_fold_cv(training_data, training_label, k_value, algo):
         y_validation = training_label[T[0]:T[-1]:].astype(np.float)
 
         if algo == 0:
-            y_predicted = KNN.run(X_train, y_train, X_validation,y_validation, k_value)
+            y_predicted = KNN.run(X_train, y_train, X_validation, k_value)
             # print y_predicted
             precision, recall, f1 = Evaluation.evaluate(y_validation, y_predicted)
             f1_sum += f1
