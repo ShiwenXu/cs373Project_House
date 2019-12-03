@@ -39,7 +39,7 @@ def evaluate(labels, predicted_labels):
         if true_predicted[i] == 0 or total_each_range[i] == 0:
             recall +=0
             continue
-        recall+=float((float(true_predicted[i])/float(total_each_range[i]))*(float(total_each_range[i]/size)))
+        recall+=float(float(true_predicted[i])/size)
     # recall = recall/10
     f1=0
     if precision+recall == 0:

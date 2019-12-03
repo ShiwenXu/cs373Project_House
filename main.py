@@ -23,3 +23,6 @@ def main():
     precision, recall, f1 = Evaluation.evaluate(test_label, dt_pre_600)
     print("DT_eval_1000:\n")
     precision, recall, f1 = Evaluation.evaluate(test_label, dt_pre_1000)
+
+
+main()

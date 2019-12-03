@@ -6,12 +6,7 @@ import preprocess
 # test with 600 data and 1000 data to show the accuracy of algorithm and ROV curve
 
 def tuning(data_500_tune, labels_500_tune):
-    #tuning the best k for K NEAREST NEIGHBOR:
-<<<<<<< HEAD
-
-=======
-    data_500_tune, labels_500_tune,data_600, label_600, data_1000,label_1000,test_data,test_label =preprocess.obtain_result()
->>>>>>> 2142e64a169ee5da5d0fa8e3f9e4ddb51d31a305
+    # tuning the best k for K NEAREST NEIGHBOR:
     max_f1=-1
     best_k_nn=-1
     for max_k in range(2, 12):
@@ -27,7 +22,7 @@ def tuning(data_500_tune, labels_500_tune):
     best_max_depth = -1
     for max_depth in range(2, 8):
         print('max_depth=%d:' % max_depth)
-        f1 = k_fold.k_fold_cv(data_500_tune, data_500_tune,1)
+        f1 = k_fold.k_fold_cv(data_500_tune, labels_500_tune,max_depth,1)
         if f1 > max_f1:
             max_f1 = f1
             best_max_depth = max_depth
@@ -38,7 +33,7 @@ def tuning(data_500_tune, labels_500_tune):
     best_min_samples_split = -1
     for min_samples_split in range(2, 10):
         print('min_samples_split=%d:' % min_samples_split)
-        f1 =k_fold.k_fold_cv(data_500_tune, data_500_tune,1)
+        f1 =k_fold.k_fold_cv(data_500_tune, labels_500_tune,min_samples_split,2)
         if f1 > max_f1:
             max_f1 = f1
             best_min_samples_split = min_samples_split
@@ -50,7 +45,7 @@ def tuning(data_500_tune, labels_500_tune):
     best_max_feature = 0
     for max_feature in range(2, 10):
         print('max_feature=%d:' % max_feature)
-        f1 = k_fold.k_fold_cv(data_500_tune, data_500_tune,1)
+        f1 = k_fold.k_fold_cv(data_500_tune, labels_500_tune,max_feature,3)
         if f1 > max_f1:
             max_f1 = f1
             best_max_feature = min_samples_split
@@ -58,6 +53,5 @@ def tuning(data_500_tune, labels_500_tune):
 
     return best_k_nn,best_max_depth,best_min_samples_split,best_max_feature
 
-tuning()
 
 

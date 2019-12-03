@@ -31,8 +31,9 @@ def k_fold_cv(training_data, training_label, k_value, algo):
         y_train = np.asarray(training_label[S[0]:S[-1]:]).astype(np.float)
         # y_train=np.asarray(y_train)
         # y_train=np.reshape(y_train,(1,len(y_train)))
+        # print(np.shape(y_train))
         y_train = y_train.ravel()
-        # print(type(y_train))
+
 
         X_validation = training_data[T[0]:T[-1]:].astype(np.float)
         y_validation = training_label[T[0]:T[-1]:].astype(np.float)
@@ -43,7 +44,7 @@ def k_fold_cv(training_data, training_label, k_value, algo):
         # max_depth
         elif algo == 1:
             y_predicted = DT.run(X_train, y_train, X_validation, k_value, 1)
-            print(y_predicted)
+            # print(y_predicted)
         # min_split
         elif algo == 2:
             y_predicted = DT.run(X_train, y_train, X_validation, k_value, 2)
