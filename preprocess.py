@@ -66,7 +66,6 @@ def price_range(price, price_1000, price_600, test_price, price_500_tune):
         for k in test_price:
                 label_test.append(dic_price[k])
         for l  in price_500_tune:
-                
                 label_500_tune.append(dic_price[l])
                 
         return label_1000, label_600, label_test, label_500_tune
@@ -114,8 +113,6 @@ def select_training(selectlsts, price):
                 data_500_tune.append(selectlsts[i])                
                 price_500_tune.append(price[i])
 
-        # print type(price_500_tune), price_500_tune
-
         return test_data, test_price, data_1000, price_1000, data_600, price_600, data_500_tune, price_500_tune
 
 def obtain_result():
@@ -129,12 +126,13 @@ def obtain_result():
         data_600 = np.asmatrix(data_600)
         data_500_tune = np.asmatrix(data_500_tune)
         
-        test_label = (np.asmatrix(label_test)).T
-        label_1000 = (np.asmatrix(label_1000)).T
-        label_600 = (np.asmatrix(label_600)).T
-        label_500_tune = (np.asmatrix(label_500_tune)).T
+        test_label = (np.asmatrix(label_test)).T.astype(np.int)
+        label_1000 = (np.asmatrix(label_1000)).T.astype(np.int)
+        label_600 = (np.asmatrix(label_600)).T.astype(np.int)
+        label_500_tune = (np.asmatrix(label_500_tune)).T.astype(np.int)
+        
         
         return data_500_tune, label_500_tune, data_600, label_600, data_1000, label_1000, test_data, test_label
 
-        
+
 obtain_result()
