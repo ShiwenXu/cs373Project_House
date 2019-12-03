@@ -58,6 +58,7 @@ def price_range(price, price_1000, price_600, test_price, price_500_tune):
         label_600 = []
         label_test = []
         label_500_tune = []
+        
         for i in price_1000:
                 label_1000.append(dic_price[i])
         for j in price_600:
@@ -65,6 +66,7 @@ def price_range(price, price_1000, price_600, test_price, price_500_tune):
         for k in test_price:
                 label_test.append(dic_price[k])
         for l  in price_500_tune:
+                
                 label_500_tune.append(dic_price[l])
                 
         return label_1000, label_600, label_test, label_500_tune
@@ -109,8 +111,10 @@ def select_training(selectlsts, price):
                 price_600.append(price[i])
 
         for i in rand_500_tune:
-                data_500_tune.append(selectlsts[i])
-                price_500_tune.append(selectlsts[i])
+                data_500_tune.append(selectlsts[i])                
+                price_500_tune.append(price[i])
+
+        # print type(price_500_tune), price_500_tune
 
         return test_data, test_price, data_1000, price_1000, data_600, price_600, data_500_tune, price_500_tune
 
