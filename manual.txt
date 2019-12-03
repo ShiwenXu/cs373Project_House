@@ -1,0 +1,16 @@
+Run Instruction:
+In source folder, simply run the command "python main.py" should work. 
+
+
+External Libraries:
+from sklearn.tree import DecisionTreeClassifier
+import numpy as np
+import sklearn.neighbors as neigh
+import csv
+from itertools import islice
+
+
+Instructions for downloading libraries:
+pip install sklearn
+pip install numpy
+pip install csv 
