@@ -128,12 +128,10 @@ def obtain_result():
         data_1000 = np.asmatrix(data_1000)
         data_600 = np.asmatrix(data_600)
         data_500_tune = np.asmatrix(data_500_tune)
-        
-        test_label = (np.asmatrix(label_test)).T
-        label_1000 = (np.asmatrix(label_1000)).T
-        label_600 = (np.asmatrix(label_600)).T
-        label_500_tune = (np.asmatrix(label_500_tune)).T
-        
+        test_label = (np.asmatrix(label_test)).T.astype(np.int)
+        label_1000 = (np.asmatrix(label_1000)).T.astype(np.int)
+        label_600 = (np.asmatrix(label_600)).T.astype(np.int)
+        label_500_tune = (np.asmatrix(label_500_tune)).T.astype(np.int)
         return data_500_tune, label_500_tune, data_600, label_600, data_1000, label_1000, test_data, test_label
 
         

@@ -1,7 +1,4 @@
-from sklearn.neighbors.nearest_centroid import NearestCentroid
 import sklearn.neighbors as neigh
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 
 
 def run(X, y, X_validation, k_value):
