@@ -36,13 +36,20 @@ def k_fold_cv(training_data, training_label, k_value, algo):
 
         X_validation = training_data[T[0]:T[-1]:].astype(np.float)
         y_validation = training_label[T[0]:T[-1]:].astype(np.float)
-
+        y_predict = 0
         if algo == 0:
             y_predicted = KNN.run(X_train, y_train, X_validation, k_value)
             # print y_predicted
-        else:
-            y_predicted = DT.run(X_train, y_train, X_validation, k_value)
+        # max_depth
+        elif algo == 1:
+            y_predicted = DT.run(X_train, y_train, X_validation, k_value, 1)
             print(y_predicted)
+        # min_split
+        elif algo == 2:
+            y_predicted = DT.run(X_train, y_train, X_validation, k_value, 2)
+        # max_feature
+        elif algo == 3:
+            y_predicted = DT.run(X_train, y_train, X_validation, k_value, 3)
 
         precision, recall, f1 = Evaluation.evaluate(y_validation, y_predicted)
         f1_sum += f1
