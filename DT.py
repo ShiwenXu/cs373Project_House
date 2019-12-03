@@ -2,8 +2,6 @@ from sklearn.tree import DecisionTreeClassifier
 import numpy as np
 
 def run(X, y, X_test, best_max_depth, best_min_samples_split, best_max_feature, flag):
-    print (np.shape(X))
-    print (np.shape(y))
     if flag == 1:
         clf = DecisionTreeClassifier(max_depth=best_max_depth)
         clf.fit(X, y)
